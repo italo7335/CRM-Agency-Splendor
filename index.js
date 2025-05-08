@@ -1,3 +1,5 @@
+process.env.CHROME_BIN = '/usr/bin/chromium-browser';
+
 const express = require('express');
 const axios = require('axios');
 const { create } = require('@wppconnect-team/wppconnect');
