@@ -1,4 +1,3 @@
-```js
 const puppeteer = require('puppeteer');
 const express = require('express');
 const axios = require('axios');
@@ -30,4 +29,3 @@ create({
 });
 
 app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
-```
