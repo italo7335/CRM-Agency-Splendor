@@ -1,8 +1,10 @@
-process.env.CHROME_BIN = '/usr/bin/chromium-browser';
-
+```js
+const puppeteer = require('puppeteer');
 const express = require('express');
 const axios = require('axios');
 const { create } = require('@wppconnect-team/wppconnect');
+
+process.env.CHROME_BIN = puppeteer.executablePath();
 
 const app = express();
 app.use(express.json());
@@ -15,8 +17,7 @@ create({
   }
 }).then((client) => {
   client.onMessage(async (message) => {
-    try {
-      await axios.post('https://zmyzuinoailpmayifusx.supabase.co/functions/v1/whatsapp-webhook', {
+    try { await axios.post('https://zmyzuinoailpmayifusx.supabase.co/functions/v1/whatsapp-webhook', {
         event: message.fromMe ? 'message_sent' : 'message_received',
         from: message.from,
         name: message.sender?.pushname || '',
@@ -29,3 +30,4 @@ create({
 });
 
 app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
+```
